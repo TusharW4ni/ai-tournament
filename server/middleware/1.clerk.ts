@@ -7,7 +7,7 @@ export default clerkMiddleware(async (event) => {
   if (!userId) {
     await sendRedirect(
       event,
-      `https://suitable-werewolf-61.accounts.dev/sign-in?redirect_url=${encodeURIComponent(
+      `https://accounts.tusharwani.com/sign-in?redirect_url=${encodeURIComponent(
         runtimeConfig.PROD_CLERK_REDIRECT_URL
       )}`
     );
