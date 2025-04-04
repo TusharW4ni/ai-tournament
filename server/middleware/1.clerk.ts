@@ -5,9 +5,6 @@ export default clerkMiddleware(async (event) => {
   const runtimeConfig = useRuntimeConfig();
   console.log({ runtimeConfig: runtimeConfig.PROD_CLERK_REDIRECT_URL });
   if (!userId && !event.path.includes("_hub")) {
-    await sendRedirect(
-      event,
-      `https://accounts.ai-tournament.tusharwani.com/sign-in`
-    );
+    await sendRedirect(event, `/`);
   }
 });
