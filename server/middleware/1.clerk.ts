@@ -7,9 +7,7 @@ export default clerkMiddleware(async (event) => {
   if (!userId && !event.path.includes("_hub")) {
     await sendRedirect(
       event,
-      `https://accounts.ai-tournament.tusharwani.com/sign-in?redirect_url=${encodeURIComponent(
-        runtimeConfig.PROD_CLERK_REDIRECT_URL
-      )}`
+      `https://accounts.ai-tournament.tusharwani.com/sign-in`
     );
   }
 });
