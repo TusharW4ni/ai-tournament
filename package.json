@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@clerk/nuxt": "^1.5.0",
+    "@types/node": "^22.14.0",
     "drizzle-kit": "^0.30.6",
     "wrangler": "^4.7.0"
   }

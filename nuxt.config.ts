@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     skipServerMiddleware: true,
   },
   runtimeConfig: {
-    DEV_CLERK_REDIRECT_URL: "",
-    PROD_CLERK_REDIRECT_URL: "",
+    DEV_CLERK_REDIRECT_URL: process.env.DEV_CLERK_REDIRECT_URL,
+    PROD_CLERK_REDIRECT_URL: process.env.PROD_CLERK_REDIRECT_URL,
   },
 });
