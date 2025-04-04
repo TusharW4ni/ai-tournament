@@ -14,4 +14,8 @@ export default defineNuxtConfig({
   clerk: {
     skipServerMiddleware: true,
   },
+  runtimeConfig: {
+    DEV_CLERK_REDIRECT_URL: "",
+    PROD_CLERK_REDIRECT_URL: "",
+  },
 });
