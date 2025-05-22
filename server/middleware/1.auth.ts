@@ -29,8 +29,10 @@ export default clerkMiddleware(async (event) => {
             id: newUser.id,
             username: username,
             email: email,
+            is_champion: false,
           })
         );
+        await sendRedirect(event, "leaderboard");
       } else {
         setCookie(
           event,
@@ -39,8 +41,18 @@ export default clerkMiddleware(async (event) => {
             id: existingUser.id,
             username: existingUser.username,
             email: existingUser.email,
+            is_champion: existingUser.isChampion,
           })
         );
+        // if (!event.path.includes("play")) {
+        if (event.path === "/") {
+          if (existingUser.isChampion) {
+            await sendRedirect(event, "/dashboard");
+          } else {
+            await sendRedirect(event, "/leaderboard");
+          }
+        }
+        // }
       }
     }
   }

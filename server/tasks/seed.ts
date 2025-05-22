@@ -1,18 +1,32 @@
+import { reset } from "drizzle-seed";
+
 export default defineTask({
   meta: {
     name: "db:seed",
     description: "Run database seed task",
   },
   async run() {
-    console.log("Running DB seed task...");
+    const db = useDrizzle();
+
+    await db.delete(tables.users);
+
     const users = [
       {
-        username: "TusharWani",
+        username: "tusharwani",
         email: "reachtusharwani@gmail.com",
+        isChampion: true,
         createdAt: new Date(),
       },
     ];
-    await useDrizzle().insert(tables.users).values(users);
-    return { result: "success" };
+
+    try {
+      console.log("Seeding database...");
+      await db.insert(tables.users).values(users);
+      console.log("Database seeded successfully!");
+      return { result: "success" };
+    } catch (error) {
+      console.error("Error seeding database:", error);
+      return { result: "error", message: "Failed to seed database" };
+    }
   },
 });
